@@ -1,0 +1,8 @@
+.idea/
+node_modules
+aot
+*.lock
+.DS_Store
+public/*
+!public/indexTemplate.html
+!public/assets
