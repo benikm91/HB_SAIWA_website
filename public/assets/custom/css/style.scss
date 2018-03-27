@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Orena Solo Mayusculas";
+  src: url("/public/assets/custom/font/trueno/TruenoRg.otf");
+}
+
+h1, h2, h3, h4, h5, h6, body, p, div {
+  font-family: "Orena Solo Mayusculas";
+}
+
+#mainNav {
+  background-color: rgba(0, 0, 0, 0.33) !important;
+}
+
+.navbar-light .navbar-toggler {
+  color: white;
+}
+
+.logo {
+  height: 60px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.masthead {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  video {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  h1 {
+    font-size: 24px;
+  }
+  .masthead {
+    margin-top: 87px;
+    padding: 0;
+  }
+  .masthead video {
+    width: 100%;
+    position: inherit;
+  }
+  #mainNav {
+    background-color: black !important;
+  }
+  section {
+    padding: 4rem 0;
+  }
+}

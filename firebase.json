@@ -1,0 +1,27 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "**/node_modules/**"
+    ],
+    "rewrites": [ {
+      "source": "**/!(*.css|*.js|*.mp4|*.map|*.jpg|*.gif|*.png|*.eot|*.otf|*.ttf|*.ttc|*.woff)",
+      "destination": "/index.html"
+    } ],
+    "headers": [ {
+      "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+      "headers" : [ {
+        "key" : "Access-Control-Allow-Origin",
+        "value" : "*"
+      } ]
+    }, {
+      "source" : "**/*.@(jpg|jpeg|gif|png)",
+      "headers" : [ {
+        "key" : "Cache-Control",
+        "value" : "max-age=7200"
+      } ]
+    } ],
+    "cleanUrls": true,
+    "trailingSlash": false
+  }
+}

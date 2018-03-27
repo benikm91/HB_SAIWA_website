@@ -1,0 +1,1 @@
+{"version":3,"sources":["default-header.component.ts"],"names":[],"mappings":";;;;;;;;AAAA,sCAA0C;AAM1C;IAJA;QAMW,aAAQ,GAAG,KAAK,CAAC;IAE5B,CAAC;IAJY,sBAAsB;QAJlC,gBAAS,CAAC;YACP,QAAQ,EAAE,gBAAgB;YAC1B,WAAW,EAAE,iCAAiC;SACjD,CAAC;OACW,sBAAsB,CAIlC;IAAD,6BAAC;CAJD,AAIC,IAAA;AAJY,wDAAsB","file":"default-header.component.js","sourceRoot":""}
