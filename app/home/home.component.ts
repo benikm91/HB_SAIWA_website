@@ -3,15 +3,7 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'home',
-    templateUrl: './home.component.html',
+    templateUrl: './home.component.pug',
     providers: [ ]
 })
-export class HomeComponent {
-
-    public constructor(
-        titleService: Title
-    ) {
-        titleService.setTitle('SaiwA');
-    }
-
-}
+export class HomeComponent { }

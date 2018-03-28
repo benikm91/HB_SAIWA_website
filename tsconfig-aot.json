@@ -20,7 +20,9 @@
   },
 
   "files": [
-    "./app/core/app.module.ts"
+    "./app/core/app.module.ts",
+    "app/main.ts",
+    "app/vendor.ts"
   ],
 
   "angularCompilerOptions": {

@@ -13,7 +13,7 @@ var PageNotFoundComponent = /** @class */ (function () {
     PageNotFoundComponent = __decorate([
         core_1.Component({
             selector: 'page-not-found',
-            templateUrl: './page-not-found.component.html'
+            templateUrl: './page-not-found.component.pug'
         })
     ], PageNotFoundComponent);
     return PageNotFoundComponent;

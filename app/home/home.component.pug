@@ -1,0 +1,103 @@
+mixin downloadButton(faClass, link)
+  a.btn.btn-light.btn-xl.m-10(href=link, download)
+    i(class='fa ' + faClass)
+    | Download
+
+mixin playNowButton(cssClass)
+  a(class='btn btn-xl m-10 ' + cssClass, pageScroll, href='#game') Jetzt gratis spielen
+
+mixin serviceBox(title, faClass, text)
+  .service-box.mt-5.mx-auto
+    i(class='fa fa-4x ' + faClass + ' text-primary mb-3 sr-icons')
+    h3.mb-3= title
+    p.text-muted.mb-0= text
+
+- var email = 'benikm91@gmail.com'
+
+.masthead.bg-dark.text-center.text-white.d-flex
+  video(autoplay='', height='100%', preload='none', width='100%')
+    source(src='/public/assets/custom/img/default-header/header.mp4')
+    img(src='/public/assets/custom/img/default-header/header.png')
+  .container.my-auto.d-none.d-lg-block
+    .row
+      .col-lg-10.mx-auto
+        h1.text-uppercase SAIWA - Das mysteriöse Space-Abenteuer!
+        hr
+      .col-lg-8.mx-auto
+        p.text-faded.mb-5
+          | Sie wachen aus dem künstlichen Tiefschlaf auf. An nichts können Sie sich erinnern.
+          | SAIWA, die zentrale Robotik-Einheit des Raumschiffes begrüsst Sie. Kann man ihr vertrauen?
+        +playNowButton('btn-primary')
+section#intro.bg-dark.text-white.d-lg-none
+  .container.text-center
+    .row
+      .col-lg-10.mx-auto
+        h1.text-uppercase SAIWA - Das mysteriöse Space-Abenteuer!
+        hr
+      .col-lg-8.mx-auto
+        p.text-faded.mb-5
+          | Sie wachen aus dem künstlichen Tiefschlaf auf. An nichts können Sie sich erinnern.
+          | SAIWA, die zentrale Robotik-Einheit des Raumschiffes begrüsst Sie. Kann man ihr vertrauen?
+        +playNowButton('btn-primary')
+section#story.bg-dark.text-white
+  .container.text-center
+    .row
+      .col-lg-8.mx-auto.text-center
+        h2.section-heading.text-white Story
+        hr.light.my-4
+        p.text-faded.mb-4.text-white
+          | Sie erwachen aus dem künstlichen Tiefschlaf, alle Ihre Erinnerungen sind vergessen.
+          | Auf Sie herabblickend schwebt SAIWA, das blaue Auge, die zentrale Robotik-Einheit des Raumschiffes.
+          br
+          | "Ein Antriebsmotor ist ausgefallen", meldet sie Ihnen, "deshalb wurden Sie geweckt".
+          br
+          | Sie schauen sich um, alle Besatzungsmitglieder liegen in ihren jeweiligen Schlafkapseln.
+          i Nicht eine Menschenseele an Bord bei Bewusstsein - ausser mir.
+          br
+          | "Schnell wir müssen den ausgefallenen Antriebsmotor reparieren. Und anschliessend wieder zurück in den Tiefschlaf.
+          | Schliesslich sollen Sie die Mission nicht gefährden!"
+          br
+          | Ihr Kopf schmerzt, ein unwohles Gefühl beklemmt Sie.
+          i Wo bin ich? Auf einem Raumschiff? Kann ich dieser SAIWA vertrauen?
+section#atmosphere.bg-primary
+  .container
+    .row
+      .col-lg-8.mx-auto.text-center
+        h2.section-heading.text-white Einzigartige Atmosphäre
+        hr.light.my-4
+        p.text-faded.mb-4
+          | Das Spiel SAIWA zielt auf eine einzigartige Spiel-Atmosphäre ab.
+          | Es werden viele Fragen aufgeworfen, Sie suchen die Antworten und finden die Geheimnisse.
+        +playNowButton('btn-light')
+section#content
+  .container
+    .row
+      .col-lg-12.text-center
+        h2.section-heading Inhalt
+        hr.my-4
+  .container
+    .row
+      .col-lg-3.col-md-6.text-center
+        +serviceBox('3 Jahre Erfahrung', 'fa-rocket', 'Seit 3 Jahren arbeitet unser Team zusammen.')
+      .col-lg-3.col-md-6.text-center
+        +serviceBox('Atmosphäre', 'fa-magic', 'Der Kernfokus während der Entwicklung war das Erschaffen einer einzigartigen Spiel-Atmosphäre.')
+      .col-lg-3.col-md-6.text-center
+        +serviceBox('Walking-3D', 'fa-cube', 'Das spezielle Gravitationssystem im Raumschiff erlaubt es an Wänden und Decken zu gehen.')
+      .col-lg-3.col-md-6.text-center
+        +serviceBox('Mit Liebe gemacht', 'fa-heart', 'Als Hobbyprojekt steck sehr viel Herzblut, Freude und Liebe zum Detail im Spiel.')
+section#game.bg-dark.text-white
+  .container.text-center
+    h2.mb-4 Das Spiel
+    +downloadButton('fa-apple', 'https://drive.google.com/file/d/1tjJS1GlZKtGCjwWOIToONW2vVVHgiSBu/view?usp=sharing')
+section#contact
+  .container
+    .row
+      .col-lg-8.mx-auto.text-center
+        h2.section-heading Feedback und Fragen sind Willkommen!
+        hr.my-4
+        p.mb-5
+    .row
+      .col-lg-4.mx-auto.text-center
+        i.fa.fa-envelope-o.fa-3x.mb-3.sr-contact
+        p
+          a(href='mailto:' + email) #{email}

@@ -1,3 +1,7 @@
+const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+
+const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
+
 const webpack = require("webpack");
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,7 +13,7 @@ const extractSCSS = new ExtractTextPlugin('[name]-two.css');
 
 const ccpOptions = {
     name: 'vendor',
-    path: __dirname + "/public",
+    path: __dirname + "/public/",
     filename: 'vendor.bundle.js'
 };
 
@@ -22,27 +26,27 @@ module.exports = {
         "app": "./app/main"
     },
     output: {
-        publicPath: '/public',
-        path: __dirname + "/public",
-        filename: "[name].bundle.js"
+        publicPath: '/public/',
+        path: __dirname + "/public/",
+        filename: "[name].bundle.js",
+        chunkFilename: 'chunks/[id].-[hash:8].chunk.js'
     },
     resolve: {
         extensions: ['.ts', '.js'],
         modules: [
-            path.resolve('./app'),
-            'node_modules'
+            'node_modules',
+            path.resolve('./app')
         ]
     },
-    devtool: 'source-map',
     module: {
         rules: [
             {
-                test: /\.ts$/,
-                use: [
-                    'awesome-typescript-loader',
-                    'angular-router-loader?aot=true&genDir=aot/',
-                    'angular2-template-loader'
-                ]
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+                loader: "@ngtools/webpack",
+            },
+            {
+                test: /\.pug$/,
+                loader: [ 'pug-ng-html-loader' ]
             },
             {
                 test: /\.html/,
@@ -79,15 +83,13 @@ module.exports = {
         extractCSS,
         extractSCSS,
 
-        new webpack.optimize.CommonsChunkPlugin(ccpOptions),
+        new AngularCompilerPlugin({
+            tsConfigPath: 'tsconfig-aot.json',
+            entryModule: 'app/core/app.module#AppModule',
+            sourceMap: true
+        }),
 
-        // Takes care of warnings described at https://github.com/angular/angular/issues/11580
-        new webpack.ContextReplacementPlugin(
-            // The (\\|\/) piece accounts for path separators in *nix and Windows
-            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-            root('./src'), // location of your src
-            { }
-        ),
+        new webpack.optimize.CommonsChunkPlugin(ccpOptions),
 
         new webpack.LoaderOptionsPlugin({
             minimize: true,
@@ -101,7 +103,7 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             filename: '../index.html',
-            template: 'indexTemplate.html'
+            template: 'indexTemplate.pug'
         }),
 
         new CompressionPlugin({
@@ -110,6 +112,10 @@ module.exports = {
             test: /\.(js|html)$/,
             threshold: 10240,
             minRatio: 0.8
+        }),
+
+        new webpack.DefinePlugin({
+            'process.env.ENV': JSON.stringify(ENV),
         })
     ]
 }
