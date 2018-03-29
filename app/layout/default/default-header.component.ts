@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class DefaultHeaderComponent {
 
+    public logo = require('public/assets/template/img/logo/logo.png');
     public expanded = false;
 
 }
